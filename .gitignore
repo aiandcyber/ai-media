@@ -1,0 +1,10 @@
+node_modules/
+dist/
+src-tauri/target/
+.DS_Store
+*.log
+.idea/
+.vscode/
+desktop/node_modules/
+desktop/dist/
+desktop/src-tauri/target/

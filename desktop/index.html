@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Translate</title>
+    <link rel="icon" type="image/png" href="/ai-forall-icon.png" />
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <img class="logo" src="/ai-forall-icon.png" width="40" height="40" alt="AI-forAll" />
+          <div>
+            <strong>Media Translate</strong>
+            <span class="sub">AI-forAll Tools</span>
+          </div>
+        </div>
+        <div class="account">
+          <span id="account-label" class="account-label">Not signed in</span>
+          <button type="button" id="auth-btn" class="btn ghost">Sign in</button>
+          <button type="button" id="contact-btn" class="btn ghost">Contact us</button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <div class="workspace-main">
+          <main class="panel" id="view-main">
+            <h1>Translate video or audio</h1>
+            <p class="hint">Desktop can handle clips longer than 30 seconds. Output media and/or text.</p>
+
+            <div class="segment" role="group" aria-label="Mode">
+              <button type="button" id="mode-video" class="seg on">Video</button>
+              <button type="button" id="mode-audio" class="seg">Audio</button>
+            </div>
+
+            <label class="field">
+              <span>File</span>
+              <input id="file" type="file" accept="video/*" />
+            </label>
+
+            <label class="field">
+              <span>Output</span>
+              <select id="output">
+                <option value="video" selected>Translated video</option>
+                <option value="text">Text only</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>From language</span>
+              <select id="source-language">
+                <option value="auto" selected>Auto</option>
+                <option value="en">English</option>
+                <option value="yue">粵語</option>
+                <option value="zh">中文</option>
+                <option value="ta">தமிழ்</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ml">മലയാളം</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="te">తెలుగు</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Target language</span>
+              <select id="language">
+                <option value="en" selected>English</option>
+                <option value="yue">粵語</option>
+                <option value="zh">中文</option>
+                <option value="ta">தமிழ்</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ml">മലയാളം</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="te">తెలుగు</option>
+              </select>
+            </label>
+
+            <div class="actions">
+              <button type="button" id="run" class="btn primary">Translate</button>
+            </div>
+            <p id="status" class="status" role="status"></p>
+            <pre id="text-out" class="status" hidden></pre>
+            <div id="downloads" class="actions"></div>
+            <footer class="app-footer">
+              <span>© 2026 AI-forAll Hong Kong Limited</span>
+            </footer>
+          </main>
+
+          <main class="panel contact-panel hidden" id="view-contact" hidden>
+            <div class="contact-head">
+              <button type="button" id="contact-back" class="btn ghost">← Back</button>
+              <h1>Contact Us</h1>
+              <p class="hint">Email us or visit our website.</p>
+            </div>
+            <section class="contact-offices" aria-label="Contact">
+              <article class="contact-office">
+                <h2>Email</h2>
+                <p><a href="mailto:Contact@ai-forall.org">Contact@ai-forall.org</a></p>
+              </article>
+              <article class="contact-office">
+                <h2>Website</h2>
+                <p><a href="https://tools.ai-forall.org/contact" target="_blank" rel="noreferrer">https://tools.ai-forall.org/contact</a></p>
+              </article>
+            </section>
+            <footer class="app-footer">
+              <span>© 2026 AI-forAll Hong Kong Limited</span>
+            </footer>
+          </main>
+        </div>
+        <div id="agent-root" class="agent-root" aria-label="AI Agent"></div>
+      </div>
+    </div>
+  </body>
+</html>
