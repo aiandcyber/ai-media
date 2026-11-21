@@ -41,6 +41,38 @@ async function refreshAuth() {
   }
 }
 
+async function restoreSession() {
+  try {
+    renderAuth(await invoke<AuthInfo>("restore_session"));
+  } catch {
+    await refreshAuth();
+  }
+}
+
+async function loadContactFromServer() {
+  const emailEl = document.querySelector<HTMLAnchorElement>("#contact-email");
+  const webEl = document.querySelector<HTMLAnchorElement>("#contact-website");
+  if (!emailEl || !webEl) return;
+  try {
+    const res = await fetch(`${TOOLS_API}/api/desktop/contact`);
+    if (!res.ok) throw new Error(String(res.status));
+    const data = (await res.json()) as { email?: string; website_url?: string };
+    const email = (data.email || "").trim();
+    const website = (data.website_url || "").trim();
+    if (email) {
+      emailEl.href = `mailto:${email}`;
+      emailEl.textContent = email;
+    }
+    if (website) {
+      webEl.href = website;
+      webEl.textContent = website;
+    }
+  } catch {
+    emailEl.textContent = "Unavailable";
+    webEl.textContent = "Unavailable";
+  }
+}
+
 async function toggleAuth() {
   const btn = document.querySelector<HTMLButtonElement>("#auth-btn");
   if (btn) btn.disabled = true;
@@ -210,5 +242,6 @@ window.addEventListener("DOMContentLoaded", () => {
     agentRefresh = panel.refreshAuthHint;
   }
 
-  void refreshAuth();
+  void restoreSession();
+  void loadContactFromServer();
 });

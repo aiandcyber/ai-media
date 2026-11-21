@@ -3,7 +3,7 @@
 set -euo pipefail
 
 TAG="${1:-app-v0.1.0}"
-APPS_DIR="${APPS_DIR:-$HOME/ai-forall-download}"
+APPS_DIR="${APPS_DIR:-$HOME/ai-forall}"
 OUT="$APPS_DIR/desktop/media-translate"
 BASE="https://github.com/aiandcyber/media-translate/releases/download/${TAG}"
 
